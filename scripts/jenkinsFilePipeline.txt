@@ -1,11 +1,17 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Hello') {
+    stages{
+        stage('build'){
             steps {
-                echo 'Hello World'
+                PowerShell(". '.\\build\\CreateVenv.ps1'") 
             }
         }
     }
+
+}
+
+def PowerShell(psCmd) {
+    psCmd=psCmd.replaceAll("%", "%%")
+    bat "powershell.exe -NonInteractive -ExecutionPolicy Bypass -Command \"\$ErrorActionPreference='Stop'
 }
