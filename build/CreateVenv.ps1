@@ -1,6 +1,6 @@
-$envName = "py_virtual_env'
+$envName = 'py_virtual_env'
 $fullEnvPath = "$PSScriptRoot\$envName"
-$activateScriptPath = "$fullEnvPath\Scripts\Active.ps1"
+$activateScriptPath = "$fullEnvPath\Scripts\Activate.ps1"
 
 Out-Host -InputObject("Creating python venv: $fullEnvPath")
 python.exe -m venv $fullEnvPath
@@ -9,6 +9,8 @@ python.exe -m venv $fullEnvPath
 
 #upgrades
 python -m pip install --upgrade pip
+pip install flake8
+pip install pytest
 pip list
 deactivate
 
